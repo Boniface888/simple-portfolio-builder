@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple Portfolio Website Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;600;800&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-ocean font-inter">
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo-dot"></span>
+      <span class="brand-name">Simple Portfolio Builder</span>
+    </div>
+    <nav class="actions">
+      <button id="saveBtn" class="btn ghost" title="Save draft locally">Save Draft</button>
+      <button id="loadBtn" class="btn ghost" title="Load saved draft">Load Draft</button>
+      <button id="resetBtn" class="btn ghost" title="Clear all inputs">Reset</button>
+      <button id="downloadBtn" class="btn primary" title="Download your portfolio HTML">Download HTML</button>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <!-- BUILDER -->
+    <section class="panel builder">
+      <h2 class="panel-title">Your Details</h2>
+
+      <div class="grid-2">
+        <div class="field">
+          <label for="name">Full Name *</label>
+          <input id="name" type="text" placeholder="e.g., Emilia Riley" required>
+        </div>
+
+        <div class="field">
+          <label for="headline">Headline *</label>
+          <input id="headline" type="text" placeholder="e.g., Frontend Developer | UI/UX Enthusiast" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="about">About Me *</label>
+        <textarea id="about" rows="4" placeholder="Write a short bio..."></textarea>
+      </div>
+
+      <div class="grid-3">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" type="text" placeholder="+233 55 123 4567">
+        </div>
+        <div class="field">
+          <label for="location">Location</label>
+          <input id="location" type="text" placeholder="Accra, Ghana">
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="field">
+          <label for="github">GitHub</label>
+          <input id="github" type="url" placeholder="https://github.com/username">
+        </div>
+        <div class="field">
+          <label for="linkedin">LinkedIn</label>
+          <input id="linkedin" type="url" placeholder="https://linkedin.com/in/username">
+        </div>
+        <div class="field">
+          <label for="website">Website</label>
+          <input id="website" type="url" placeholder="https://yourdomain.com">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="photo">Profile Photo</label>
+        <input id="photo" type="file" accept="image/*">
+        <small class="hint">PNG/JPG recommended. Square images look best.</small>
+      </div>
+
+      <!-- Skills -->
+      <div class="section-split">
+        <h3>Skills</h3>
+        <div class="skill-add">
+          <input id="skillInput" type="text" placeholder="Add a skill and press Enter" />
+          <button id="addSkillBtn" class="btn">Add</button>
+        </div>
+        <div id="skillsList" class="chips" aria-live="polite"></div>
+      </div>
+
+      <!-- Projects -->
+      <div class="section-split">
+        <h3>Projects</h3>
+        <div class="grid-3">
+          <input id="projTitle" type="text" placeholder="Project title">
+          <input id="projLink" type="url" placeholder="https://link-to-project.com">
+          <input id="projDesc" type="text" placeholder="Short description">
+        </div>
+        <div class="proj-actions">
+          <button id="addProjectBtn" class="btn">Add Project</button>
+        </div>
+        <div id="projectsList" class="cards" aria-live="polite"></div>
+      </div>
+
+      <!-- Theme & Font -->
+      <div class="grid-2">
+        <div class="field">
+          <label for="themeSelect">Theme</label>
+          <select id="themeSelect">
+            <option value="ocean">Ocean (Blue)</option>
+            <option value="sunset">Sunset (Coral)</option>
+            <option value="forest">Forest (Green)</option>
+            <option value="midnight">Midnight (Dark)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fontSelect">Font</label>
+          <select id="fontSelect">
+            <option value="inter">Inter (Sans)</option>
+            <option value="poppins">Poppins (Sans)</option>
+            <option value="merriweather">Merriweather (Serif)</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREVIEW -->
+    <section class="panel preview">
+      <h2 class="panel-title">Live Preview</h2>
+      <div id="preview" class="portfolio"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Made for semester project — build, preview, download.</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
