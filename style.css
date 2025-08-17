@@ -1,107 +1,108 @@
-/* General Reset */
-* {
+/* ===================
+   Global Styles
+   =================== */
+   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
-  /* Background */
-  body.login-body {
+  body {
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: url('login-bg.jpg') no-repeat center center/cover;
   }
   
-  /* Login & Signup wrapper */
-  .login-wrapper {
+  /* ===================
+     Login Page
+     =================== */
+  body.login-page {
+    background: url("login-bg.jpg") no-repeat center center/cover;
     display: flex;
-    width: 80%;
-    max-width: 1000px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    justify-content: center;
+    align-items: center;
   }
   
-  /* Left side text */
-  .login-left {
+  .page-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    max-width: 1100px;
+  }
+  
+  .welcome-text {
     flex: 1;
-    background: rgba(0, 123, 255, 0.9);
     color: white;
-    padding: 50px 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 20px;
   }
   
-  .login-left h1 {
+  .welcome-text h2 {
     font-size: 28px;
-    margin-bottom: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff;
   }
   
-  .login-left p {
+  .welcome-text p {
     font-size: 18px;
-    line-height: 1.5;
+    color: #dfefff;
   }
   
-  /* Right side form */
-  .login-right {
-    flex: 1;
-    padding: 50px 30px;
+  .login-container {
+    flex: 3;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    max-width: 400px;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    color: #007BFF;
+  }
+  
+  form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-  }
-  
-  .login-right h2 {
-    margin-bottom: 20px;
-    color: #007bff;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: #333;
+    gap: 15px;
   }
   
   input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-  }
-  
-  /* Password toggle */
-  .password-container {
-    position: relative;
-  }
-  
-  .toggle-password {
-    position: absolute;
-    top: 50%;
-    right: 12px;
-    transform: translateY(-50%);
-    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #007BFF;
+    border-radius: 5px;
     font-size: 16px;
   }
   
-  /* Button */
-  button {
+  .password-wrapper {
+    position: relative;
+  }
+  
+  .password-wrapper input {
     width: 100%;
-    padding: 12px;
-    background: #007bff;
+    padding-right: 40px;
+  }
+  
+  .password-wrapper span {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  button {
+    padding: 10px;
+    background: #007BFF;
     border: none;
-    border-radius: 6px;
     color: white;
-    font-weight: bold;
+    border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
   }
@@ -110,15 +111,199 @@
     background: #0056b3;
   }
   
-  .switch-text {
+  p {
     margin-top: 15px;
-    font-size: 14px;
   }
-  .switch-text a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  .switch-text a:hover {
-    text-decoration: underline;
-  }
-  
+/* Sign-Up Page Styles */
+body.signup-page {
+  background: url('signup-bg.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.page-wrapper {
+  display: flex;
+  justify-content: center;   /* center both items */
+  align-items: center;
+  width: 85%;
+  max-width: 1100px;
+  gap: 40px;   /* adjust spacing between welcome text and form */
+}
+
+
+.welcome-text {
+  flex: 1;
+  color: white;
+  padding: 20px;
+}
+
+.welcome-text h2 {
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.welcome-text p {
+  font-size: 28px;
+  color: #e0eaff;
+}
+
+.signup-container {
+  flex: 5;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  max-width: 500px;
+  margin-left: 50px;
+}
+
+.signup-container h1 {
+  margin-bottom: 40px;
+  color: #007BFF;
+}
+
+.signup-container input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #007BFF;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 40px;
+}
+
+.password-wrapper span {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.signup-container button {
+  width: 100%;
+  padding: 10px;
+  background: #007BFF;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.signup-container button:hover {
+  background: #0056b3;
+}
+
+.signup-container p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+.signup-container p a {
+  color: #007BFF;
+  text-decoration: none;
+}
+.signup-container p a:hover {
+  text-decoration: underline;
+}
+/* === DASHBOARD STYLING === */
+
+.dashboard-body {
+  display: flex;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: url('dashboard-bg.jpg') no-repeat center center/cover; /* Dashboard background */
+  color: white;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background: rgba(0, 0, 50, 0.9);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+  color: white;
+  font-size: 22px;
+}
+
+.sidebar ul {
+  list-style: none;
+  width: 100%;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  padding: 10px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background: white;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 40px;
+}
+
+.main-content h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.main-content p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color:white;
+}
+
+/* Cards */
+.dashboard-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: rgb(12, 3, 65);
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 250px;
+  transition: 0.3s;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: white;
+}
+
+.card:hover {
+  background: rgba(194, 23, 23, 0.2);
+}

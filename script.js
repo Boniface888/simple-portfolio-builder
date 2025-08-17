@@ -1,59 +1,68 @@
-// ===== Toggle Password Visibility =====
-function togglePassword() {
-    const passwordField = document.getElementById("password");
-    if (passwordField.type === "password") {
-      passwordField.type = "text";
+// ===================
+// Password Eye Toggle
+// ===================
+const togglePassword = document.getElementById("togglePassword");
+const passwordInput = document.getElementById("password");
+
+if (togglePassword && passwordInput) {
+  togglePassword.addEventListener("click", () => {
+    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+    passwordInput.setAttribute("type", type);
+
+    // Change icon when toggled
+    togglePassword.textContent = type === "password" ? "👁️" : "🙈";
+  });
+}
+
+// ===================
+// Login Form Redirect
+// ===================
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault(); // stop form from refreshing the page
+
+    // Get username & password (you can expand this later with real validation)
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (username && password) {
+      // Redirect to next page (change 'dashboard.html' if needed)
+      window.location.href = "dashboard.html";
     } else {
-      passwordField.type = "password";
+      alert("Please enter both username and password.");
     }
-  }
-  
-  // ===== Handle Sign Up =====
-  const signupForm = document.getElementById("signupForm");
-  if (signupForm) {
-    signupForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-  
-      const email = document.getElementById("signupEmail").value;
-      const password = document.getElementById("signupPassword").value;
-  
-      if (email && password) {
-        // Save credentials in localStorage
-        localStorage.setItem("userEmail", email);
-        localStorage.setItem("userPassword", password);
-  
-        alert("Sign Up successful! You can now login.");
-        window.location.href = "login.html"; // redirect to login
-      } else {
-        alert("Please fill in all fields.");
-      }
-    });
-  }
-  
-  // ===== Handle Login =====
+  });
+}
+document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");
-  if (loginForm) {
-    loginForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-  
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-  
-      const savedEmail = localStorage.getItem("userEmail");
-      const savedPassword = localStorage.getItem("userPassword");
-  
-      if (!savedEmail || !savedPassword) {
-        alert("You need to sign up first before logging in.");
-        window.location.href = "signup.html";
-        return;
-      }
-  
-      if (email === savedEmail && password === savedPassword) {
-        alert("Login successful! 🎉");
-        window.location.href = "home.html"; // redirect to homepage after login
-      } else {
-        alert("Wrong credentials. Please try again.");
-      }
-    });
-  }
-  
+  const togglePassword = document.getElementById("togglePassword");
+  const passwordInput = document.getElementById("password");
+
+  // Toggle Password Visibility
+  togglePassword.addEventListener("click", () => {
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      togglePassword.textContent = "🙈"; // Change icon
+    } else {
+      passwordInput.type = "password";
+      togglePassword.textContent = "👁️"; // Reset icon
+    }
+  });
+
+  // Handle Login Form
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value.trim();
+    const password = passwordInput.value.trim();
+
+    if (username && password) {
+      // For now, just redirect to dashboard (no backend yet)
+      window.location.href = "dashboard.html";
+    } else {
+      alert("Please enter both username and password.");
+    }
+  });
+});
