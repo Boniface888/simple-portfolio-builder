@@ -1,19 +1,165 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Preview - Portfolio Builder</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio Preview</title>
+  <style>
+    body.preview-page {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: url('dashboard-bg.jpg') no-repeat center center/cover;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 3rem auto;
+      background: rgba(89, 171, 248, 0.9);
+      padding: 2rem;
+      border-radius: 8px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    header img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #3498db;
+      margin-bottom: 1rem;
+    }
+    header h1 {
+      margin: 0.5rem 0;
+      font-size: 2rem;
+    }
+    header h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #555;
+    }
+    section {
+      margin-bottom: 1.8rem;
+    }
+    section h3 {
+      margin-bottom: 0.6rem;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 0.2rem;
+      font-size: 1.1rem;
+    }
+    section p, section ul {
+      margin-top: 0;
+      line-height: 1.6;
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .actions button {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: opacity 0.2s;
+    }
+    .actions button:hover {
+      opacity: 0.9;
+    }
+    .edit-btn { background: #f1c40f; color: white; }
+    .download-btn { background: #2ecc71; color: white; }
+  </style>
 </head>
-<body>
-  <div class="container card">
-    <h2>Portfolio Preview</h2>
-    <div id="previewBox" class="preview"></div>
-    <a href="download.html"><button>Download</button></a>
+<body class="preview-page">
+  <div class="container">
+    <header>
+      <img id="profileImage" src="default-avatar.png" alt="Profile">
+      <h1 id="name">Your Name</h1>
+      <h2 id="title">Your Title</h2>
+    </header>
+
+    <section>
+      <h3>About Me</h3>
+      <p id="about">A brief introduction...</p>
+    </section>
+
+    <section>
+      <h3>Contact</h3>
+      <p>Email: <span id="email"></span></p>
+      <p>Phone: <span id="phone"></span></p>
+      <p>Location: <span id="location"></span></p>
+      <p>Website: <a id="website" href="#"></a></p>
+      <p>LinkedIn: <a id="linkedin" href="#" target="_blank"></a></p>
+      <p>GitHub: <a id="github" href="#" target="_blank"></a></p>
+    </section>
+
+    <section>
+      <h3>Skills</h3>
+      <p id="skills"></p>
+    </section>
+
+    <section>
+      <h3>Education</h3>
+      <p id="education"></p>
+    </section>
+
+    <section>
+      <h3>Experience</h3>
+      <p id="experience"></p>
+    </section>
+
+    <section>
+      <h3>Projects</h3>
+      <p id="projectsData"></p>
+    </section>
+
+    <div class="actions">
+      <button class="edit-btn" onclick="editAgain()">Edit</button>
+      <button class="download-btn" onclick="goToDownload()">Go to Download HTML</button>
+    </div>
   </div>
-  <script src="script.js"></script>
+
   <script>
-    showPreview();
+    document.addEventListener("DOMContentLoaded", () => {
+      const data = JSON.parse(localStorage.getItem("previewProject")) || {};
+      
+      // Load profile image
+      const profileImg = document.getElementById("profileImage");
+      if (data.image && data.image.startsWith("data:image")) {
+        profileImg.src = data.image; // Base64 image from localStorage
+      } else {
+        profileImg.src = "default-avatar.png"; // fallback
+      }
+
+      // Load text fields
+      document.getElementById("name").textContent = data.fullName || "";
+      document.getElementById("title").textContent = data.jobTitle || "";
+      document.getElementById("about").textContent = data.about || "";
+      document.getElementById("email").textContent = data.email || "";
+      document.getElementById("phone").textContent = data.phone || "";
+      document.getElementById("location").textContent = data.location || "";
+      document.getElementById("website").textContent = data.website || "";
+      document.getElementById("website").href = data.website || "#";
+      document.getElementById("linkedin").textContent = data.linkedin || "";
+      document.getElementById("linkedin").href = data.linkedin || "#";
+      document.getElementById("github").textContent = data.github || "";
+      document.getElementById("github").href = data.github || "#";
+      document.getElementById("skills").textContent = data.skills || "";
+      document.getElementById("education").textContent = data.education || "";
+      document.getElementById("experience").textContent = data.experience || "";
+      document.getElementById("projectsData").textContent = data.projects || "";
+    });
+
+    function editAgain() {
+      window.location.href = "dashboard.html";
+    }
+
+    function goToDownload() {
+      window.location.href = "download.html";
+    }
   </script>
 </body>
 </html>
